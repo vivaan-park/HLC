@@ -88,7 +88,6 @@ def train_after_correction(device, model, train_loader, new_labels, optimizer1, 
     corrected_labels = []
     for i, (data, labels) in enumerate(train_loader):
         data = data.to(device)
-        print(f'[DEBUG] {new_labels}')
         labels = new_labels[i].to(device)
 
         train_total += 1
@@ -299,7 +298,7 @@ def main():
     val_loader = dataloader(val_dataset, batch_size)
     test_loader = dataloader(test_dataset, batch_size)
 
-    print('>>> Building modle <<<')
+    print('>>> Building model <<<')
     clf1 = gcn.get_model(num_classes)
     clf1 = nn.DataParallel(clf1)
     clf1.to(device)
